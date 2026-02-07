@@ -1,5 +1,5 @@
 ---
-name: debugger
+name: superpowers:debugger
 description: Systematic debugging agent - methodical root cause analysis
 mode: subagent
 model: inherit

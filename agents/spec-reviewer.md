@@ -1,5 +1,5 @@
 ---
-name: spec-reviewer
+name: superpowers:spec-reviewer
 description: Spec compliance reviewer - verifies implementation matches requirements exactly
 mode: subagent
 model: inherit
