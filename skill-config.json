@@ -1,0 +1,42 @@
+{
+  "$schema": "./skill-config.schema.json",
+  "description": "Superpowers skill configuration - maps skills to specialized agents with specific models",
+  "agents": {
+    "sp-implementer": {
+      "description": "Implementation subagent for coding tasks",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.3
+    },
+    "sp-spec-reviewer": {
+      "description": "Spec compliance reviewer - verifies implementation matches requirements",
+      "model": "anthropic/claude-haiku-4-20250514",
+      "temperature": 0.1
+    },
+    "sp-code-reviewer": {
+      "description": "Code quality reviewer - checks code quality, architecture, testing",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.1
+    },
+    "sp-debugger": {
+      "description": "Systematic debugging agent",
+      "model": "anthropic/claude-sonnet-4-20250514",
+      "temperature": 0.2
+    }
+  },
+  "skill_agent_mapping": {
+    "subagent-driven-development": {
+      "implementer": "sp-implementer",
+      "spec-reviewer": "sp-spec-reviewer",
+      "code-quality-reviewer": "sp-code-reviewer"
+    },
+    "systematic-debugging": {
+      "default": "sp-debugger"
+    },
+    "requesting-code-review": {
+      "reviewer": "sp-code-reviewer"
+    },
+    "dispatching-parallel-agents": {
+      "default": "sp-implementer"
+    }
+  }
+}
