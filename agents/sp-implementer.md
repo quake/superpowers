@@ -2,7 +2,7 @@
 name: sp-implementer
 description: Implementation subagent for superpowers skills - handles coding tasks with TDD discipline
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: inherit
 temperature: 0.3
 ---
 

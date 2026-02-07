@@ -2,7 +2,7 @@
 name: sp-code-reviewer
 description: Code quality reviewer - checks architecture, testing, and maintainability
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: inherit
 temperature: 0.1
 ---
 

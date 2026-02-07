@@ -2,7 +2,7 @@
 name: sp-debugger
 description: Systematic debugging agent - methodical root cause analysis
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: inherit
 temperature: 0.2
 ---
 

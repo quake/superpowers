@@ -88,16 +88,15 @@ Instructions say WHAT, not HOW. "Add X" or "Fix Y" doesn't mean skip workflows.
 
 ## Agent Configuration
 
-Superpowers uses specialized agents with specific models for different tasks:
+Superpowers uses specialized agents for different tasks. By default, all agents inherit the primary agent's model. Override in `opencode.json` to use different models:
 
-| Agent | Default Model | Purpose |
-|-------|---------------|---------|
-| `sp-implementer` | claude-sonnet-4 | Implementation tasks |
-| `sp-spec-reviewer` | claude-haiku-4 | Spec compliance review |
-| `sp-code-reviewer` | claude-sonnet-4 | Code quality review |
-| `sp-debugger` | claude-sonnet-4 | Systematic debugging |
+| Agent | Purpose |
+|-------|---------|
+| `sp-implementer` | Implementation tasks |
+| `sp-spec-reviewer` | Spec compliance review |
+| `sp-code-reviewer` | Code quality review |
+| `sp-debugger` | Systematic debugging |
 
 When a skill's prompt template specifies `subagent_type: sp-*`, use that agent.
 
-**To customize models:** Edit agent files in `agents/` or override in `opencode.json`.
-See `skill-configuration` skill for details.
+**To customize models:** Override in `opencode.json`. See `skill-configuration` skill for details.

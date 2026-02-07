@@ -2,7 +2,7 @@
 name: sp-spec-reviewer
 description: Spec compliance reviewer - verifies implementation matches requirements exactly
 mode: subagent
-model: anthropic/claude-haiku-4-20250514
+model: inherit
 temperature: 0.1
 ---
 

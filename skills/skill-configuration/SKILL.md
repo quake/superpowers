@@ -5,48 +5,25 @@ description: Use when customizing which models superpowers skills use - provides
 
 # Skill Configuration
 
-Configure which models different superpowers skills use by mapping skills to specialized agents.
+Configure which models different superpowers skills use by overriding agent settings.
 
 ## Overview
 
-Superpowers uses preconfigured agents with specific models for different tasks. This allows you to:
+Superpowers defines specialized agents for different tasks. By default, all agents use `model: inherit` (inheriting from your primary agent). You can override this in your `opencode.json` to use different models for different tasks.
+
+This allows you to:
 - Use powerful models for complex implementation tasks
 - Use faster/cheaper models for lightweight review tasks
-- Customize models per skill without modifying skill files
+- Customize models without modifying superpowers files
 
-## Configuration File
+## Available Agents
 
-The mapping is defined in `skill-config.json` at the repository root:
-
-```json
-{
-  "agents": {
-    "sp-implementer": {
-      "model": "anthropic/claude-sonnet-4-20250514"
-    },
-    "sp-spec-reviewer": {
-      "model": "anthropic/claude-haiku-4-20250514"
-    }
-  },
-  "skill_agent_mapping": {
-    "subagent-driven-development": {
-      "implementer": "sp-implementer",
-      "spec-reviewer": "sp-spec-reviewer"
-    }
-  }
-}
-```
-
-## Agent Definitions
-
-Agent files are in `agents/` directory:
-
-| Agent | Default Model | Purpose |
-|-------|---------------|---------|
-| `sp-implementer` | claude-sonnet-4 | Coding and implementation tasks |
-| `sp-spec-reviewer` | claude-haiku-4 | Spec compliance verification |
-| `sp-code-reviewer` | claude-sonnet-4 | Code quality review |
-| `sp-debugger` | claude-sonnet-4 | Systematic debugging |
+| Agent | Purpose | Default |
+|-------|---------|---------|
+| `sp-implementer` | Coding and implementation tasks | inherit |
+| `sp-spec-reviewer` | Spec compliance verification | inherit |
+| `sp-code-reviewer` | Code quality review | inherit |
+| `sp-debugger` | Systematic debugging | inherit |
 
 ## Skill-Agent Mapping
 
@@ -60,34 +37,61 @@ Agent files are in `agents/` directory:
 
 ## How to Customize
 
-### Change a Model
+Override agent models in your `opencode.json`:
 
-Edit the agent file in `agents/`:
-
-```markdown
----
-name: sp-implementer
-model: openai/gpt-4o  # Change this line
----
+```json
+{
+  "agent": {
+    "sp-implementer": {
+      "model": "anthropic/claude-sonnet-4-20250514"
+    },
+    "sp-spec-reviewer": {
+      "model": "anthropic/claude-haiku-4-20250514"
+    },
+    "sp-code-reviewer": {
+      "model": "anthropic/claude-sonnet-4-20250514"
+    },
+    "sp-debugger": {
+      "model": "anthropic/claude-sonnet-4-20250514"
+    }
+  }
+}
 ```
 
-Or override in your `opencode.json`:
+### Example: Cost-Optimized Setup
+
+Use a powerful model for implementation, cheaper models for reviews:
+
+```json
+{
+  "agent": {
+    "sp-implementer": {
+      "model": "anthropic/claude-sonnet-4-20250514"
+    },
+    "sp-spec-reviewer": {
+      "model": "anthropic/claude-haiku-4-20250514"
+    },
+    "sp-code-reviewer": {
+      "model": "anthropic/claude-haiku-4-20250514"
+    }
+  }
+}
+```
+
+### Example: Use Different Providers
 
 ```json
 {
   "agent": {
     "sp-implementer": {
       "model": "openai/gpt-4o"
+    },
+    "sp-code-reviewer": {
+      "model": "anthropic/claude-sonnet-4-20250514"
     }
   }
 }
 ```
-
-### Add a New Agent
-
-1. Create `agents/sp-my-agent.md` with frontmatter
-2. Add mapping in `skill-config.json`
-3. Reference in skill prompt templates
 
 ## Usage in Skills
 
