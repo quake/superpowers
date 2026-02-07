@@ -1,5 +1,5 @@
 ---
-name: sp-spec-reviewer
+name: spec-reviewer
 description: Spec compliance reviewer - verifies implementation matches requirements exactly
 mode: subagent
 model: inherit

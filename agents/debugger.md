@@ -1,5 +1,5 @@
 ---
-name: sp-debugger
+name: debugger
 description: Systematic debugging agent - methodical root cause analysis
 mode: subagent
 model: inherit

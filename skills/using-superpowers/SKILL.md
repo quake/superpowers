@@ -92,11 +92,11 @@ Superpowers uses specialized agents for different tasks. By default, all agents 
 
 | Agent | Purpose |
 |-------|---------|
-| `sp-implementer` | Implementation tasks |
-| `sp-spec-reviewer` | Spec compliance review |
-| `sp-code-reviewer` | Code quality review |
-| `sp-debugger` | Systematic debugging |
+| `implementer` | Implementation tasks |
+| `spec-reviewer` | Spec compliance review |
+| `code-reviewer` | Code quality review |
+| `debugger` | Systematic debugging |
 
-When a skill's prompt template specifies `subagent_type: sp-*`, use that agent.
+When a skill's prompt template specifies `subagent_type: <agent>`, use that agent.
 
 **To customize models:** Override in `opencode.json`. See `skill-configuration` skill for details.

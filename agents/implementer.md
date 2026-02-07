@@ -1,5 +1,5 @@
 ---
-name: sp-implementer
+name: implementer
 description: Implementation subagent for superpowers skills - handles coding tasks with TDD discipline
 mode: subagent
 model: inherit
